@@ -1,0 +1,33 @@
+ting:
+  connections:
+    myconnection_mysql:
+      namespace: CCMBenchmark\Ting\Driver\Mysqli
+      charset: utf8
+      master:
+        host:     mysqli
+        port:     3306
+        user:     mysql
+        password: 12345
+    myconnection_pgsql:
+      namespace: CCMBenchmark\Ting\Driver\Pgsql
+      charset: utf8
+      master:
+        host: pgsql
+        port: 5432
+        user: postgres
+        password: 12345
+  repositories:
+    Mysqli:
+      namespace: App\Mysqli\Repository
+      directory: "%kernel.project_dir%/src/Mysqli/Repository"
+      options:
+        default:
+          connection: myconnection_mysql
+          database: mydatabase
+    Pgsql:
+      namespace: App\Pgsql\Repository
+      directory: "%kernel.project_dir%/src/Pgsql/Repository"
+      options:
+        default:
+          connection: myconnection_pgsql
+          database: mydatabase

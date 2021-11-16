@@ -1,0 +1,51 @@
+resources:
+  App\Mysqli\Entity\MysqliUser:
+    collectionOperations:
+      get:
+        filters: [ 'value' ]
+      post: ~
+    itemOperations:
+    properties:
+      firstname:
+        identifier: true
+      lastname:
+  App\Mysqli\Entity\MysqliFilter:
+    collectionOperations:
+      get:
+        filters: ['filter.search']
+      post: ~
+    properties:
+      name:
+        identifier: true
+      value:
+      valuePartial:
+      valueStart:
+      valueEnd:
+      valueWordStart:
+      valueIpartial:
+  App\Pgsql\Entity\PgsqlUser:
+    attributes:
+    collectionOperations:
+      get:
+        filters: [ 'value' ]
+      post: ~
+    itemOperations:
+    properties:
+      firstname:
+        identifier: true
+      lastname:
+  App\Pgsql\Entity\PgsqlFilter:
+    attributes:
+    collectionOperations:
+      get:
+        filters: ['filter.search']
+      post: ~
+    properties:
+      name:
+        identifier: true
+      value:
+      valuePartial:
+      valueStart:
+      valueEnd:
+      valueWordStart:
+      valueIpartial:

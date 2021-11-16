@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+
+  php:
+    build:
+      context: .
+    ports:
+      - 80:80
+    tty: true
+    depends_on:
+      - mysqli
+    volumes:
+      - .:/var/www/html
+
+  mysqli:
+    image: mariadb:10.6
+    environment:
+      MARIADB_ROOT_PASSWORD: 12345
+      MYSQL_USER: mysql
+      MYSQL_PASSWORD: 12345
+      MARIADB_DATABASE: mydatabase
+    volumes:
+      - ./docker/dump.mysqli.sql:/docker-entrypoint-initdb.d/dump.mariadb.sql
+
+  pgsql:
+    image: postgres:9.6
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: mydatabase
+    volumes:
+      - ./docker/dump.pgsql.sql:/docker-entrypoint-initdb.d/dump.pgsql.sql
+
